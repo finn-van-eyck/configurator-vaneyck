@@ -1,0 +1,77 @@
+:root {
+  --color-carbon-900: #080a0a;
+  --color-carbon-800: #0d0f10;
+  --color-graphite-700: #181c1e;
+  --color-graphite-600: #252b2d;
+  --color-steel-400: #a5adb0;
+  --color-white-100: #f5f6f4;
+  --color-lime-400: #c8ff3d;
+  --color-lime-500: #b3e92c;
+
+  --color-bg-base: var(--color-carbon-800);
+  --color-bg-deep: var(--color-carbon-900);
+  --color-bg-panel: rgba(24, 28, 30, 0.82);
+  --color-bg-panel-strong: rgba(24, 28, 30, 0.96);
+  --color-bg-elevated: var(--color-graphite-600);
+  --color-bg-overlay: rgba(8, 10, 10, 0.6);
+
+  --color-text-primary: var(--color-white-100);
+  --color-text-secondary: var(--color-steel-400);
+  --color-text-inverse: var(--color-carbon-800);
+  --color-text-accent: var(--color-lime-400);
+
+  --color-actions-primary: var(--color-lime-400);
+  --color-actions-primary-hover: var(--color-lime-500);
+  --color-actions-primary-text: var(--color-carbon-800);
+  --color-actions-secondary: transparent;
+  --color-actions-secondary-hover: var(--color-graphite-600);
+
+  --color-border-subtle: rgba(165, 173, 176, 0.18);
+  --color-border-strong: rgba(165, 173, 176, 0.34);
+  --color-border-accent: var(--color-lime-400);
+
+  --font-family-display: "Archivo Black", "Arial Black", sans-serif;
+  --font-family-body: "Manrope", system-ui, -apple-system, sans-serif;
+
+  --font-size-label: 0.62rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.5rem;
+  --font-size-display: clamp(3.1rem, 4.8vw, 5.1rem);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 800;
+
+  --line-height-display: 0.88;
+  --line-height-base: 1.5;
+  --letter-spacing-display: -0.075em;
+  --letter-spacing-label: 0.2em;
+
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  --radius-card: 9px;
+  --radius-dock: 16px;
+  --radius-pill: 999px;
+
+  --shadow-panel: 0 18px 50px rgba(0, 0, 0, 0.32);
+  --blur-panel: blur(16px);
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-fast: 200ms var(--ease-out);
+  --transition-base: 380ms var(--ease-out);
+
+  --header-height: 84px;
+  --edge-offset: 24px;
+}
