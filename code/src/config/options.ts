@@ -147,6 +147,11 @@ export const PLATE_WEIGHTS: PlateStack = {
   small: 1.25,
 };
 
+export const PLATE_PRICES: PlateStack = {
+  large: 6,
+  small: 4,
+};
+
 export const BAR_WEIGHT = 2.5;
 export const MIN_PLATES_PER_SIDE = 1;
 export const MAX_PLATES_PER_SIDE = 4;
