@@ -41,4 +41,20 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-xs);
+}.configurator__ui button {
+  padding: var(--space-2xs) var(--space-sm);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg-panel);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.configurator__ui button:hover {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-border-accent);
 }

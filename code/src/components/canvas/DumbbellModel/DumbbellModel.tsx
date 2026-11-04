@@ -1,7 +1,9 @@
 import { useGLTF } from "@react-three/drei";
 import type { Mesh } from "three";
-import { useConfigStore } from "../../../store/useConfigStore";
 import { DRACO_PATH, MODEL_PATH } from "../../../constants";
+import { useConfigStore } from "../../../store/useConfigStore";
+import PlateStack from "../PlateStack/PlateStack";
+import Collars from "../Collars/Collars";
 
 const DumbbellModel = () => {
   const { nodes } = useGLTF(MODEL_PATH, DRACO_PATH);
@@ -36,6 +38,9 @@ const DumbbellModel = () => {
         position={handle.position}
         rotation={handle.rotation}
       />
+
+      <PlateStack />
+      <Collars />
 
       {rack === "stand" && (
         <mesh
