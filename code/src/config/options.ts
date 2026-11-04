@@ -194,3 +194,24 @@ export const DEFAULT_CONFIG: Config = {
   ledColor: "lime",
   ledEffect: "static",
 };
+
+//HELPERS
+//zoekt de hexcode van een kleur in een kleurenlijst
+export const findHex = (colors: ColorOption[], id: string) => {
+  const color = colors.find((item) => item.id === id);
+
+  if (color) {
+    return color.hex;
+  }
+  return "#ffffff";
+};
+
+//zoekt alle gegevens van een afwerking (metalness, roughness, ...)
+export const findFinish = (id: FinishType) => {
+  const finish = FINISHES.find((item) => item.id === id);
+
+  if (finish) {
+    return finish;
+  }
+  return FINISHES[0];
+};
