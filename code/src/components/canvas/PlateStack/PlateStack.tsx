@@ -1,9 +1,10 @@
 import { useGLTF } from "@react-three/drei";
 import type { Mesh } from "three";
 import { DRACO_PATH, MODEL_PATH } from "../../../constants";
-import { useConfigStore } from "../../../store/useConfigStore";
-import type { PlateSize } from "../../../config/options";
 import { PLATE_PITCH, PLATE_START } from "../../../config/assembly";
+import { FINISH_COLORS, findFinish, findHex } from "../../../config/options";
+import type { PlateSize } from "../../../config/options";
+import { useConfigStore } from "../../../store/useConfigStore";
 
 //welke Blender-mesh bij welke vorm en grootte hoort
 const PLATE_MESHES = {
@@ -17,9 +18,15 @@ const PlateStack = () => {
 
   const plateShape = useConfigStore((state) => state.plateShape);
   const plates = useConfigStore((state) => state.plates);
+  const finish = useConfigStore((state) => state.finish);
+  const finishColor = useConfigStore((state) => state.finishColor);
 
   const largePlate = nodes[PLATE_MESHES[plateShape].large] as Mesh;
   const smallPlate = nodes[PLATE_MESHES[plateShape].small] as Mesh;
+
+  //materiaal en kleur opzoeken op basis van de keuzes in de store
+  const finishOption = findFinish(finish);
+  const colorHex = findHex(FINISH_COLORS, finishColor);
 
   //lijst met de schijven van één kant: eerst de grote (dichtst bij het handvat), dan de kleine
   const sizes: PlateSize[] = [];
@@ -40,10 +47,15 @@ const PlateStack = () => {
       <mesh
         key={index}
         geometry={plate.geometry}
-        material={plate.material}
         position={[PLATE_START + index * PLATE_PITCH, plate.position.y, 0]}
         rotation={plate.rotation}
-      />
+      >
+        <meshStandardMaterial
+          color={colorHex}
+          metalness={finishOption.metalness}
+          roughness={finishOption.roughness}
+        />
+      </mesh>
     );
   });
 

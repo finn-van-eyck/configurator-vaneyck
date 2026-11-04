@@ -2,6 +2,12 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Link } from "react-router";
 import { ROUTES } from "../../constants";
+import {
+  FINISHES,
+  FINISH_COLORS,
+  GRIP_COLORS,
+  RACK_COLORS,
+} from "../../config/options";
 import { useConfigStore } from "../../store/useConfigStore";
 import { useTotals } from "../../hooks/useTotals";
 import Experience from "../../components/canvas/Experience/Experience";
@@ -18,7 +24,11 @@ const ConfiguratorPage = () => {
   const setGrip = useConfigStore((state) => state.setGrip);
   const setRack = useConfigStore((state) => state.setRack);
   const setCollar = useConfigStore((state) => state.setCollar);
+  const setFinish = useConfigStore((state) => state.setFinish);
+  const setFinishColor = useConfigStore((state) => state.setFinishColor);
   const reset = useConfigStore((state) => state.reset);
+  const setGripColor = useConfigStore((state) => state.setGripColor);
+  const setRackColor = useConfigStore((state) => state.setRackColor);
 
   const { price, weight } = useTotals();
 
@@ -70,13 +80,6 @@ const ConfiguratorPage = () => {
           Ergo
         </button>
 
-        <button type="button" onClick={() => setRack("stand")}>
-          Rack aan
-        </button>
-        <button type="button" onClick={() => setRack("none")}>
-          Rack uit
-        </button>
-
         <button type="button" onClick={() => setCollar("screw")}>
           Screw
         </button>
@@ -84,6 +87,52 @@ const ConfiguratorPage = () => {
           Quick
         </button>
 
+        <button type="button" onClick={() => setRack("stand")}>
+          Rack aan
+        </button>
+        <button type="button" onClick={() => setRack("none")}>
+          Rack uit
+        </button>
+
+        {FINISHES.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            onClick={() => setFinish(option.id)}
+          >
+            {option.label}
+          </button>
+        ))}
+
+        {FINISH_COLORS.map((color) => (
+          <button
+            key={color.id}
+            type="button"
+            onClick={() => setFinishColor(color.id)}
+          >
+            {color.label}
+          </button>
+        ))}
+
+        {GRIP_COLORS.map((color) => (
+          <button
+            key={color.id}
+            type="button"
+            onClick={() => setGripColor(color.id)}
+          >
+            Grip {color.label}
+          </button>
+        ))}
+
+        {RACK_COLORS.map((color) => (
+          <button
+            key={color.id}
+            type="button"
+            onClick={() => setRackColor(color.id)}
+          >
+            Rack {color.label}
+          </button>
+        ))}
         <button type="button" onClick={reset}>
           Reset
         </button>
