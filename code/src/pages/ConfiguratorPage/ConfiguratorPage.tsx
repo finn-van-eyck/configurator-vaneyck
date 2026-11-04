@@ -6,6 +6,7 @@ import { useTotals } from "../../hooks/useTotals";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import Experience from "../../components/canvas/Experience/Experience";
+import LoadingScreen from "../../components/ui/LoadingScreen/LoadingScreen";
 
 const ConfiguratorPage = () => {
   const plateShape = useConfigStore((state) => state.plateShape);
@@ -50,6 +51,7 @@ const ConfiguratorPage = () => {
           Back
         </Link>
       </div>
+      <LoadingScreen />
     </main>
   );
 };

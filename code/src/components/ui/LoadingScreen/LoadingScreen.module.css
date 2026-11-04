@@ -1,0 +1,40 @@
+.loading {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  background-color: var(--color-bg-deep);
+}
+
+.loading__logo {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-2xl);
+  font-style: italic;
+  letter-spacing: var(--letter-spacing-display);
+  line-height: 1;
+}
+
+.loading__track {
+  width: 220px;
+  height: 2px;
+  overflow: hidden;
+  background-color: var(--color-border-subtle);
+}
+
+.loading__bar {
+  height: 100%;
+  background-color: var(--color-actions-primary);
+  transition: width var(--transition-fast);
+}
+
+.loading__label {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
