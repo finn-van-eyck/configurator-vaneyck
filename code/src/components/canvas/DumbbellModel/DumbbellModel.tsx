@@ -1,15 +1,59 @@
 import { useGLTF } from "@react-three/drei";
-
-const MODEL_PATH = "/models/dumbell.glb";
-const DRACO_PATH = "/draco/";
+import type { Mesh } from "three";
+import { useConfigStore } from "../../../store/useConfigStore";
+import { DRACO_PATH, MODEL_PATH } from "../../../constants";
 
 const DumbbellModel = () => {
-  const { scene } = useGLTF(MODEL_PATH, DRACO_PATH);
+  const { nodes } = useGLTF(MODEL_PATH, DRACO_PATH);
 
-  return <primitive object={scene} />;
+  const grip = useConfigStore((state) => state.grip);
+  const rack = useConfigStore((state) => state.rack);
+
+  const bar = nodes.Bar as Mesh;
+  const handleKnurled = nodes.Handle_Knurled as Mesh;
+  const handleErgo = nodes.Handle_Ergo as Mesh;
+  const rackStand = nodes.Rack_Stand as Mesh;
+  const ledStrip = nodes.LED_Strip as Mesh;
+
+  //het handvat dat getoond wordt hangt af van de keuze in de store
+  let handle = handleKnurled;
+  if (grip === "ergo") {
+    handle = handleErgo;
+  }
+
+  return (
+    <group>
+      <mesh
+        geometry={bar.geometry}
+        material={bar.material}
+        position={bar.position}
+        rotation={bar.rotation}
+      />
+
+      <mesh
+        geometry={handle.geometry}
+        material={handle.material}
+        position={handle.position}
+        rotation={handle.rotation}
+      />
+
+      {rack === "stand" && (
+        <mesh
+          geometry={rackStand.geometry}
+          material={rackStand.material}
+          position={rackStand.position}
+        >
+          <mesh
+            geometry={ledStrip.geometry}
+            material={ledStrip.material}
+            position={ledStrip.position}
+          />
+        </mesh>
+      )}
+    </group>
+  );
 };
 
-//model al beginnen laden voordat het component getoond wordt
 useGLTF.preload(MODEL_PATH, DRACO_PATH);
 
 export default DumbbellModel;
