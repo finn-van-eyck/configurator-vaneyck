@@ -3,6 +3,9 @@ import { ROUTES } from "../../constants";
 import { useConfigStore } from "../../store/useConfigStore";
 import styles from "./ConfiguratorPage.module.css";
 import { useTotals } from "../../hooks/useTotals";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import Experience from "../../components/canvas/Experience/Experience";
 
 const ConfiguratorPage = () => {
   const plateShape = useConfigStore((state) => state.plateShape);
@@ -16,30 +19,37 @@ const ConfiguratorPage = () => {
 
   return (
     <main className={styles.configurator}>
-      <p className={styles.configurator__label}>
-        {plateShape} / large {plates.large} / small {plates.small}
-      </p>
+      <div className={styles.configurator__canvas}>
+        <Canvas camera={{ fov: 32, position: [18, 10, 26] }} dpr={1}>
+          <Suspense fallback={null}>
+            <Experience />
+          </Suspense>
+        </Canvas>
+      </div>
 
-      <button type="button" onClick={() => setPlateShape("olympic")}>
-        Olympic
-      </button>
-      <button type="button" onClick={() => addPlate("large")}>
-        + large
-      </button>
-      <button type="button" onClick={() => removePlate("large")}>
-        - large
-      </button>
-      <button type="button" onClick={reset}>
-        Reset
-      </button>
-
-      <p className={styles.configurator__label}>
-        €{price} / {weight} kg
-      </p>
-
-      <Link to={ROUTES.HOME} className={styles.configurator__back}>
-        Back
-      </Link>
+      <div className={styles.configurator__ui}>
+        <p className={styles.configurator__label}>
+          {plateShape} / large {plates.large} / small {plates.small}
+        </p>
+        <p className={styles.configurator__label}>
+          €{price} / {weight} kg
+        </p>
+        <button type="button" onClick={() => setPlateShape("olympic")}>
+          Olympic
+        </button>
+        <button type="button" onClick={() => addPlate("large")}>
+          + large
+        </button>
+        <button type="button" onClick={() => removePlate("large")}>
+          - large
+        </button>
+        <button type="button" onClick={reset}>
+          Reset
+        </button>
+        <Link to={ROUTES.HOME} className={styles.configurator__back}>
+          Back
+        </Link>
+      </div>
     </main>
   );
 };

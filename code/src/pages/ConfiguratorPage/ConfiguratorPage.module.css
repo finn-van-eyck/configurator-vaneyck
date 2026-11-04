@@ -28,3 +28,17 @@
 .configurator__back:hover {
   color: var(--color-text-primary);
 }
+.configurator__canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.configurator__ui {
+  position: absolute;
+  top: var(--space-lg);
+  left: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
