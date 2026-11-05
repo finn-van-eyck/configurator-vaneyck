@@ -1,7 +1,5 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import { Link } from "react-router";
-import { ROUTES } from "../../constants";
 import {
   FINISHES,
   FINISH_COLORS,
@@ -15,6 +13,8 @@ import { useConfigStore } from "../../store/useConfigStore";
 import { useTotals } from "../../hooks/useTotals";
 import Experience from "../../components/canvas/Experience/Experience";
 import LoadingScreen from "../../components/ui/LoadingScreen/LoadingScreen";
+import StudioHeader from "../../components/ui/StudioHeader/StudioHeader";
+import StepHeading from "../../components/ui/StepHeading/StepHeading";
 import styles from "./ConfiguratorPage.module.css";
 
 const ConfiguratorPage = () => {
@@ -25,16 +25,17 @@ const ConfiguratorPage = () => {
   const addPlate = useConfigStore((state) => state.addPlate);
   const removePlate = useConfigStore((state) => state.removePlate);
   const setGrip = useConfigStore((state) => state.setGrip);
-  const setRack = useConfigStore((state) => state.setRack);
+  const setGripColor = useConfigStore((state) => state.setGripColor);
   const setCollar = useConfigStore((state) => state.setCollar);
+  const setRack = useConfigStore((state) => state.setRack);
+  const setRackColor = useConfigStore((state) => state.setRackColor);
   const setFinish = useConfigStore((state) => state.setFinish);
   const setFinishColor = useConfigStore((state) => state.setFinishColor);
-  const reset = useConfigStore((state) => state.reset);
-  const setGripColor = useConfigStore((state) => state.setGripColor);
-  const setRackColor = useConfigStore((state) => state.setRackColor);
   const setLedMode = useConfigStore((state) => state.setLedMode);
   const setLedColor = useConfigStore((state) => state.setLedColor);
   const setLedEffect = useConfigStore((state) => state.setLedEffect);
+  const reset = useConfigStore((state) => state.reset);
+
   const { price, weight } = useTotals();
 
   return (
@@ -47,6 +48,10 @@ const ConfiguratorPage = () => {
         </Canvas>
       </div>
 
+      <StudioHeader />
+      <StepHeading />
+
+      {/* tijdelijke testknoppen, verdwijnen in 7c */}
       <div className={styles.configurator__ui}>
         <p className={styles.configurator__label}>
           {plateShape} / large {plates.large} / small {plates.small}
@@ -168,13 +173,10 @@ const ConfiguratorPage = () => {
             {option.label}
           </button>
         ))}
+
         <button type="button" onClick={reset}>
           Reset
         </button>
-
-        <Link to={ROUTES.HOME} className={styles.configurator__back}>
-          Back
-        </Link>
       </div>
 
       <LoadingScreen />

@@ -18,13 +18,13 @@ export type Step = {
 };
 
 export const STEPS: Step[] = [
-  { id: "plates", label: "Plates", title: "Shape your base." },
-  { id: "finish", label: "Finish", title: "Pick your steel." },
-  { id: "weight", label: "Weight", title: "Set the load." },
-  { id: "grip", label: "Grip", title: "Find your hold." },
-  { id: "collar", label: "Collar", title: "Lock it down." },
-  { id: "rack", label: "Rack", title: "Frame the build." },
-  { id: "light", label: "Light", title: "Set the signal." },
+  { id: "plates", label: "Schijven", title: "Vorm je basis." },
+  { id: "finish", label: "Afwerking", title: "Kies je staal." },
+  { id: "weight", label: "Gewicht", title: "Bepaal de last." },
+  { id: "grip", label: "Grip", title: "Vind je houvast." },
+  { id: "collar", label: "Sluiting", title: "Zet het vast." },
+  { id: "rack", label: "Rack", title: "Geef het een sokkel." },
+  { id: "light", label: "Licht", title: "Geef het signaal." },
 ];
 
 //OPTIONS
@@ -40,9 +40,9 @@ export type Option<T> = {
 export type PlateShape = "round" | "hex" | "olympic";
 
 export const PLATE_SHAPES: Option<PlateShape>[] = [
-  { id: "round", label: "Round", price: 0 },
-  { id: "hex", label: "Hex", price: 0 },
-  { id: "olympic", label: "Olympic", price: 8 },
+  { id: "round", label: "Rond", price: 0 },
+  { id: "hex", label: "Zeshoek", price: 0 },
+  { id: "olympic", label: "Olympisch", price: 8 },
 ];
 
 
@@ -72,30 +72,30 @@ export type ColorOption = {
 };
 
 export const FINISH_COLORS: ColorOption[] = [
-  { id: "graphite", label: "Graphite", hex: "#222729" },
-  { id: "silver", label: "Silver", hex: "#D8DBD8" },
-  { id: "steel", label: "Steel", hex: "#727A7C" },
-  { id: "bronze", label: "Bronze", hex: "#6E5543" },
-  { id: "forest", label: "Forest", hex: "#22352E" },
-  { id: "midnight", label: "Midnight", hex: "#313142" },
+  { id: "graphite", label: "Grafiet", hex: "#222729" },
+  { id: "silver", label: "Zilver", hex: "#D8DBD8" },
+  { id: "steel", label: "Staal", hex: "#727A7C" },
+  { id: "bronze", label: "Brons", hex: "#6E5543" },
+  { id: "forest", label: "Bosgroen", hex: "#22352E" },
+  { id: "midnight", label: "Middernacht", hex: "#313142" },
 ];
 
 export const GRIP_COLORS: ColorOption[] = FINISH_COLORS.filter(
   (color) => color.id !== "midnight",
 );
 export const RACK_COLORS: ColorOption[] = [
-  { id: "matte-black", label: "Matte black", hex: "#101314" },
-  { id: "anthracite", label: "Anthracite", hex: "#343A3D" },
-  { id: "white", label: "White", hex: "#F5F6F4" },
-  { id: "signal-red", label: "Signal red", hex: "#D93030" },
+  { id: "matte-black", label: "Matzwart", hex: "#101314" },
+  { id: "anthracite", label: "Antraciet", hex: "#343A3D" },
+  { id: "white", label: "Wit", hex: "#F5F6F4" },
+  { id: "signal-red", label: "Signaalrood", hex: "#D93030" },
 ];
 
 export const LED_COLORS: ColorOption[] = [
-  { id: "warm-white", label: "Warm white", hex: "#FFF1D6" },
-  { id: "ice-blue", label: "Ice blue", hex: "#5CC8FF" },
+  { id: "warm-white", label: "Warm wit", hex: "#FFF1D6" },
+  { id: "ice-blue", label: "IJsblauw", hex: "#5CC8FF" },
   { id: "lime", label: "Lime", hex: "#C8FF3D" },
-  { id: "red", label: "Red", hex: "#FF2D2D" },
-  { id: "purple", label: "Purple", hex: "#A46BFF" },
+  { id: "red", label: "Rood", hex: "#FF2D2D" },
+  { id: "purple", label: "Paars", hex: "#A46BFF" },
 ];
 
 //GRIP,COLLAR,RACK,LED OPTIONS
