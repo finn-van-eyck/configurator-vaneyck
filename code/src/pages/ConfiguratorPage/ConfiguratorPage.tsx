@@ -16,6 +16,7 @@ import LoadingScreen from "../../components/ui/LoadingScreen/LoadingScreen";
 import StudioHeader from "../../components/ui/StudioHeader/StudioHeader";
 import StepHeading from "../../components/ui/StepHeading/StepHeading";
 import styles from "./ConfiguratorPage.module.css";
+import ProgressSteps from "../../components/ui/ProgressSteps/ProgressSteps";
 
 const ConfiguratorPage = () => {
   const plateShape = useConfigStore((state) => state.plateShape);
@@ -50,6 +51,7 @@ const ConfiguratorPage = () => {
 
       <StudioHeader />
       <StepHeading />
+      <ProgressSteps />
 
       {/* tijdelijke testknoppen, verdwijnen in 7c */}
       <div className={styles.configurator__ui}>
