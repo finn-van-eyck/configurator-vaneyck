@@ -1,5 +1,5 @@
 import { Environment, OrbitControls } from "@react-three/drei";
-import { useCameraRig } from "../../../hooks/UseCameraRig";
+import { useCameraRig } from "../../../hooks/useCameraRig";
 import DumbbellModel from "../DumbbellModel/DumbbellModel";
 
 const Experience = () => {

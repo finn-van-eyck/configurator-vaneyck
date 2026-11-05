@@ -3,7 +3,6 @@ import gsap from "gsap";
 import { useEffect } from "react";
 import { useConfigStore } from "../store/useConfigStore";
 
-//per stap waar de camera staat [x, y, z], zodat het juiste onderdeel goed in beeld komt
 const CAMERA_POSITIONS = {
   plates: [32, 13, 26],
   finish: [19, 15, 35],
@@ -21,7 +20,6 @@ export const useCameraRig = () => {
   useEffect(() => {
     const position = CAMERA_POSITIONS[currentStep];
 
-    //de camera vloeiend naar de nieuwe positie laten bewegen
     const tween = gsap.to(camera.position, {
       x: position[0],
       y: position[1],
@@ -30,7 +28,6 @@ export const useCameraRig = () => {
       ease: "power2.inOut",
     });
 
-    //stopt de oude beweging als de stap verandert voor ze klaar is
     return () => {
       tween.kill();
     };
