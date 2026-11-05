@@ -7,6 +7,7 @@ import StepHeading from "../../components/ui/StepHeading/StepHeading";
 import ProgressSteps from "../../components/ui/ProgressSteps/ProgressSteps";
 import OptionRail from "../../components/ui/OptionRail/OptionRail";
 import styles from "./ConfiguratorPage.module.css";
+import TotalPrice from "../../components/ui/TotalPrice/TotalPrice";
 
 const ConfiguratorPage = () => {
   return (
@@ -23,7 +24,7 @@ const ConfiguratorPage = () => {
       <StepHeading />
       <OptionRail />
       <ProgressSteps />
-
+      <TotalPrice />
       <LoadingScreen />
     </main>
   );

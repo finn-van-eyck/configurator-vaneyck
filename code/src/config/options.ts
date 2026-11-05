@@ -219,3 +219,24 @@ export const getTotalWeight = (plates: PlateStack) => {
   const perSide = plates.large * PLATE_WEIGHTS.large + plates.small * PLATE_WEIGHTS.small;
   return BAR_WEIGHT + perSide * 2;
 };
+
+
+//zoekt het label van een optie op basis van de id
+export const findLabel = (options: { id: string; label: string }[], id: string) => {
+  const option = options.find((item) => item.id === id);
+
+  if (option) {
+    return option.label;
+  }
+  return "";
+};
+
+//zoekt de prijs van een optie op basis van de id
+export const findPrice = (options: Option<string>[], id: string) => {
+  const option = options.find((item) => item.id === id);
+
+  if (option) {
+    return option.price;
+  }
+  return 0;
+};

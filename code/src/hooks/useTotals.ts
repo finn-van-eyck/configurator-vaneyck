@@ -5,23 +5,12 @@ import {
   FINISHES,
   GRIPS,
   LED_MODES,
-  PLATE_SHAPES,
   PLATE_PRICES,
+  PLATE_SHAPES,
   RACKS,
-  getTotalWeight
+  findPrice,
+  getTotalWeight,
 } from "../config/options";
-import type { Option } from "../config/options";
-
-//zoekt de optie met deze id in de lijst en geeft de prijs terug
-const findPrice = (options: Option<string>[], id: string) => {
-  const option = options.find((item) => item.id === id);
-
-  if (option) {
-    return option.price;
-  }
-  //anders geeft die undefined en kan er geen prijs berekend worden
-  return 0;
-};
 
 export const useTotals = () => {
   const plateShape = useConfigStore((state) => state.plateShape);
@@ -43,8 +32,10 @@ export const useTotals = () => {
   if (rack === "stand") {
     price += findPrice(LED_MODES, ledMode);
   }
+
   const platesPricePerSide = plates.large * PLATE_PRICES.large + plates.small * PLATE_PRICES.small;
   price += platesPricePerSide * 2;
+
   const weight = getTotalWeight(plates);
 
   return { price, weight };
