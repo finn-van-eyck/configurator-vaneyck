@@ -6,6 +6,9 @@ import {
   FINISHES,
   FINISH_COLORS,
   GRIP_COLORS,
+  LED_COLORS,
+  LED_EFFECTS,
+  LED_MODES,
   RACK_COLORS,
 } from "../../config/options";
 import { useConfigStore } from "../../store/useConfigStore";
@@ -29,7 +32,9 @@ const ConfiguratorPage = () => {
   const reset = useConfigStore((state) => state.reset);
   const setGripColor = useConfigStore((state) => state.setGripColor);
   const setRackColor = useConfigStore((state) => state.setRackColor);
-
+  const setLedMode = useConfigStore((state) => state.setLedMode);
+  const setLedColor = useConfigStore((state) => state.setLedColor);
+  const setLedEffect = useConfigStore((state) => state.setLedEffect);
   const { price, weight } = useTotals();
 
   return (
@@ -131,6 +136,36 @@ const ConfiguratorPage = () => {
             onClick={() => setRackColor(color.id)}
           >
             Rack {color.label}
+          </button>
+        ))}
+
+        {LED_MODES.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            onClick={() => setLedMode(option.id)}
+          >
+            LED {option.label}
+          </button>
+        ))}
+
+        {LED_COLORS.map((color) => (
+          <button
+            key={color.id}
+            type="button"
+            onClick={() => setLedColor(color.id)}
+          >
+            LED {color.label}
+          </button>
+        ))}
+
+        {LED_EFFECTS.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            onClick={() => setLedEffect(option.id)}
+          >
+            {option.label}
           </button>
         ))}
         <button type="button" onClick={reset}>

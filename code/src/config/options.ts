@@ -196,7 +196,6 @@ export const DEFAULT_CONFIG: Config = {
 };
 
 //HELPERS
-//zoekt de hexcode van een kleur in een kleurenlijst
 export const findHex = (colors: ColorOption[], id: string) => {
   const color = colors.find((item) => item.id === id);
 
@@ -206,7 +205,6 @@ export const findHex = (colors: ColorOption[], id: string) => {
   return "#ffffff";
 };
 
-//zoekt alle gegevens van een afwerking (metalness, roughness, ...)
 export const findFinish = (id: FinishType) => {
   const finish = FINISHES.find((item) => item.id === id);
 

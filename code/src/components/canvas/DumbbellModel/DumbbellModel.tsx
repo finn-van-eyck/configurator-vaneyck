@@ -5,6 +5,7 @@ import { GRIP_COLORS, RACK_COLORS, findHex } from "../../../config/options";
 import { useConfigStore } from "../../../store/useConfigStore";
 import PlateStack from "../PlateStack/PlateStack";
 import Collars from "../Collars/Collars";
+import LedRing from "../LedRing/LedRing";
 
 const DumbbellModel = () => {
   const { nodes } = useGLTF(MODEL_PATH, DRACO_PATH);
@@ -18,7 +19,6 @@ const DumbbellModel = () => {
   const handleKnurled = nodes.Handle_Knurled as Mesh;
   const handleErgo = nodes.Handle_Ergo as Mesh;
   const rackStand = nodes.Rack_Stand as Mesh;
-  const ledStrip = nodes.LED_Strip as Mesh;
 
   const gripHex = findHex(GRIP_COLORS, gripColor);
   const rackHex = findHex(RACK_COLORS, rackColor);
@@ -65,11 +65,7 @@ const DumbbellModel = () => {
             metalness={0.3}
             roughness={0.55}
           />
-          <mesh
-            geometry={ledStrip.geometry}
-            material={ledStrip.material}
-            position={ledStrip.position}
-          />
+          <LedRing />
         </mesh>
       )}
     </group>
