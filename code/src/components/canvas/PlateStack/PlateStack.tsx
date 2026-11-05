@@ -5,6 +5,7 @@ import { PLATE_PITCH, PLATE_START } from "../../../config/assembly";
 import { FINISH_COLORS, findFinish, findHex } from "../../../config/options";
 import type { PlateSize } from "../../../config/options";
 import { useConfigStore } from "../../../store/useConfigStore";
+import Plate from "../Plate/Plate";
 
 //welke Blender-mesh bij welke vorm en grootte hoort
 const PLATE_MESHES = {
@@ -44,18 +45,16 @@ const PlateStack = () => {
     }
 
     return (
-      <mesh
-        key={index}
+      <Plate
+        key={size + "-" + index}
         geometry={plate.geometry}
-        position={[PLATE_START + index * PLATE_PITCH, plate.position.y, 0]}
+        x={PLATE_START + index * PLATE_PITCH}
+        y={plate.position.y}
         rotation={plate.rotation}
-      >
-        <meshStandardMaterial
-          color={colorHex}
-          metalness={finishOption.metalness}
-          roughness={finishOption.roughness}
-        />
-      </mesh>
+        color={colorHex}
+        metalness={finishOption.metalness}
+        roughness={finishOption.roughness}
+      />
     );
   });
 
