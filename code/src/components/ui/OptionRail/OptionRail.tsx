@@ -15,6 +15,7 @@ import { useConfigStore } from "../../../store/useConfigStore";
 import OptionCard from "../OptionCard/OptionCard";
 import ColorPicker from "../ColorPicker/ColorPicker";
 import styles from "./OptionRail.module.css";
+import WeightPicker from "../WeightPicker/WeightPicker";
 
 const OptionRail = () => {
   const currentStep = useConfigStore((state) => state.currentStep);
@@ -189,6 +190,14 @@ const OptionRail = () => {
             ))}
           </>
         )}
+      </div>
+    );
+  }
+
+  if (currentStep === "weight") {
+    return (
+      <div className={styles.optionRail}>
+        <WeightPicker />
       </div>
     );
   }

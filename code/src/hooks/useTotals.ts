@@ -1,15 +1,14 @@
 import { useConfigStore } from "../store/useConfigStore";
 import {
-  BAR_WEIGHT,
   BASE_PRICE,
   COLLARS,
   FINISHES,
   GRIPS,
   LED_MODES,
   PLATE_SHAPES,
-  PLATE_WEIGHTS,
   PLATE_PRICES,
   RACKS,
+  getTotalWeight
 } from "../config/options";
 import type { Option } from "../config/options";
 
@@ -46,8 +45,7 @@ export const useTotals = () => {
   }
   const platesPricePerSide = plates.large * PLATE_PRICES.large + plates.small * PLATE_PRICES.small;
   price += platesPricePerSide * 2;
-  const platesPerSide = plates.large * PLATE_WEIGHTS.large + plates.small * PLATE_WEIGHTS.small;
-  const weight = BAR_WEIGHT + platesPerSide * 2;
+  const weight = getTotalWeight(plates);
 
   return { price, weight };
 };

@@ -213,3 +213,9 @@ export const findFinish = (id: FinishType) => {
   }
   return FINISHES[0];
 };
+
+//totaal gewicht: de stang + de schijven aan beide kanten
+export const getTotalWeight = (plates: PlateStack) => {
+  const perSide = plates.large * PLATE_WEIGHTS.large + plates.small * PLATE_WEIGHTS.small;
+  return BAR_WEIGHT + perSide * 2;
+};
