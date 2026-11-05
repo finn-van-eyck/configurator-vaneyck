@@ -1,0 +1,50 @@
+.optionRail {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: 148px;
+  left: 0;
+  min-height: 92px;
+  padding: 0 4vw;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: var(--space-xs);
+  overflow-x: auto;
+  scrollbar-width: none;
+  pointer-events: none;
+}
+
+.optionRail > * {
+  pointer-events: auto;
+}
+
+.optionRail__message {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 12px 18px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-panel-strong);
+}
+
+.optionRail__message p {
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.optionRail__message button {
+  padding: var(--space-xs) var(--space-md);
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-actions-primary);
+  color: var(--color-actions-primary-text);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

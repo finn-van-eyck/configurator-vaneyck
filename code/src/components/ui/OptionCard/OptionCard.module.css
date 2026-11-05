@@ -1,0 +1,38 @@
+.optionCard {
+  min-width: 132px;
+  min-height: 88px;
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-panel-strong);
+  backdrop-filter: blur(12px);
+  text-align: left;
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.optionCard:hover {
+  transform: translateY(-2px);
+}
+
+.optionCard--selected {
+  border-color: var(--color-border-accent);
+}
+
+.optionCard__label {
+  font-size: 0.65rem;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.optionCard__price {
+  font-size: 0.56rem;
+  color: var(--color-text-secondary);
+}

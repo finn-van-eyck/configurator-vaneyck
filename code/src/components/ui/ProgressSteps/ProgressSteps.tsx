@@ -5,7 +5,6 @@ import styles from "./ProgressSteps.module.css";
 const ProgressSteps = () => {
   const currentStep = useConfigStore((state) => state.currentStep);
   const setCurrentStep = useConfigStore((state) => state.setCurrentStep);
-
   const stepIndex = STEPS.findIndex((step) => step.id === currentStep);
 
   return (

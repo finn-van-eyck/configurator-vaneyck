@@ -8,8 +8,7 @@ const Experience = () => {
       <directionalLight position={[4, 11, 9]} intensity={3.7} />
       <Environment preset="warehouse" environmentIntensity={0.32} />
 
-      <OrbitControls makeDefault target={[0, 2, 0]} />
-
+      <OrbitControls makeDefault target={[0, 1, 0]} />
       <DumbbellModel />
     </>
   );
