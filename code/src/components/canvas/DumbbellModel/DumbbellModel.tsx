@@ -4,6 +4,7 @@ import { useRef } from "react";
 import type { Group, Mesh } from "three";
 import { DRACO_PATH, MODEL_PATH } from "../../../constants";
 import { GRIP_COLORS, findHex } from "../../../config/options";
+import { useBakedTextures } from "../../../hooks/useBakedTextures";
 import { useConfigStore } from "../../../store/useConfigStore";
 import PlateStack from "../PlateStack/PlateStack";
 import Collars from "../Collars/Collars";
@@ -11,6 +12,7 @@ import Rack from "../Rack/Rack";
 
 const DumbbellModel = () => {
   const { nodes } = useGLTF(MODEL_PATH, DRACO_PATH);
+  const textures = useBakedTextures();
 
   const grip = useConfigStore((state) => state.grip);
   const gripColor = useConfigStore((state) => state.gripColor);
@@ -54,10 +56,16 @@ const DumbbellModel = () => {
         {grip === "knurled" && (
           <mesh
             geometry={handleKnurled.geometry}
-            material={handleKnurled.material}
             position={handleKnurled.position}
             rotation={handleKnurled.rotation}
-          />
+          >
+            <meshStandardMaterial
+              color="#b8bdbf"
+              metalness={1}
+              roughness={0.4}
+              normalMap={textures.knurlNormal}
+            />
+          </mesh>
         )}
 
         {grip === "ergo" && (
@@ -70,6 +78,7 @@ const DumbbellModel = () => {
               color={gripHex}
               metalness={0}
               roughness={0.85}
+              normalMap={textures.gripNormal}
             />
           </mesh>
         )}

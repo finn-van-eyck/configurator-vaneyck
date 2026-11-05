@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import type { BufferGeometry, Euler, Mesh } from "three";
+import type { BufferGeometry, Euler, Mesh, Texture } from "three";
 import { useAppear } from "../../../hooks/useAppear";
 
 type PlateProps = {
@@ -10,6 +10,9 @@ type PlateProps = {
   color: string;
   metalness: number;
   roughness: number;
+  normalMap: Texture | null;
+  roughnessMap: Texture | null;
+  finishId: string;
 };
 
 const Plate = ({
@@ -20,6 +23,9 @@ const Plate = ({
   color,
   metalness,
   roughness,
+  normalMap,
+  roughnessMap,
+  finishId,
 }: PlateProps) => {
   const plateRef = useRef<Mesh>(null);
 
@@ -34,9 +40,12 @@ const Plate = ({
       rotation={rotation}
     >
       <meshStandardMaterial
+        key={finishId}
         color={color}
         metalness={metalness}
         roughness={roughness}
+        normalMap={normalMap}
+        roughnessMap={roughnessMap}
       />
     </mesh>
   );

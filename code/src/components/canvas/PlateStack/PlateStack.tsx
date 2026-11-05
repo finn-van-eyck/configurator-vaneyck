@@ -1,9 +1,10 @@
 import { useGLTF } from "@react-three/drei";
-import type { Mesh } from "three";
+import type { Mesh, Texture } from "three";
 import { DRACO_PATH, MODEL_PATH } from "../../../constants";
 import { PLATE_PITCH, PLATE_START } from "../../../config/assembly";
 import { FINISH_COLORS, findFinish, findHex } from "../../../config/options";
 import type { PlateSize } from "../../../config/options";
+import { useBakedTextures } from "../../../hooks/useBakedTextures";
 import { useConfigStore } from "../../../store/useConfigStore";
 import Plate from "../Plate/Plate";
 
@@ -16,6 +17,7 @@ const PLATE_MESHES = {
 
 const PlateStack = () => {
   const { nodes } = useGLTF(MODEL_PATH, DRACO_PATH);
+  const textures = useBakedTextures();
 
   const plateShape = useConfigStore((state) => state.plateShape);
   const plates = useConfigStore((state) => state.plates);
@@ -28,6 +30,18 @@ const PlateStack = () => {
   //materiaal en kleur opzoeken op basis van de keuzes in de store
   const finishOption = findFinish(finish);
   const colorHex = findHex(FINISH_COLORS, finishColor);
+
+  //welke gebakken textures bij deze afwerking horen (chroom heeft er geen)
+  let normalMap: Texture | null = null;
+  let roughnessMap: Texture | null = null;
+  if (finishOption.textureSet === "iron") {
+    normalMap = textures.ironNormal;
+    roughnessMap = textures.ironRoughness;
+  }
+  if (finishOption.textureSet === "rubber") {
+    normalMap = textures.rubberNormal;
+    roughnessMap = textures.rubberRoughness;
+  }
 
   //lijst met de schijven van één kant: eerst de grote (dichtst bij het handvat), dan de kleine
   const sizes: PlateSize[] = [];
@@ -54,6 +68,9 @@ const PlateStack = () => {
         color={colorHex}
         metalness={finishOption.metalness}
         roughness={finishOption.roughness}
+        normalMap={normalMap}
+        roughnessMap={roughnessMap}
+        finishId={finish}
       />
     );
   });

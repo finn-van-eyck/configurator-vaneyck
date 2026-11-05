@@ -4,12 +4,14 @@ import type { Mesh } from "three";
 import { DRACO_PATH, MODEL_PATH } from "../../../constants";
 import { RACK_COLORS, findHex } from "../../../config/options";
 import { useAppear } from "../../../hooks/useAppear";
+import { useBakedTextures } from "../../../hooks/useBakedTextures";
 import { useConfigStore } from "../../../store/useConfigStore";
 import LedRing from "../LedRing/LedRing";
 
 const Rack = () => {
   const { nodes } = useGLTF(MODEL_PATH, DRACO_PATH);
   const rackStand = nodes.Rack_Stand as Mesh;
+  const textures = useBakedTextures();
 
   const rackColor = useConfigStore((state) => state.rackColor);
   const rackHex = findHex(RACK_COLORS, rackColor);
@@ -25,7 +27,13 @@ const Rack = () => {
       geometry={rackStand.geometry}
       position={rackStand.position}
     >
-      <meshStandardMaterial color={rackHex} metalness={0.3} roughness={0.55} />
+      <meshStandardMaterial
+        color={rackHex}
+        metalness={0.3}
+        roughness={0.55}
+        normalMap={textures.rackNormal}
+        roughnessMap={textures.rackRoughness}
+      />
       <LedRing />
     </mesh>
   );
