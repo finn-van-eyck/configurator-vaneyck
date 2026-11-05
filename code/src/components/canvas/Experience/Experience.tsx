@@ -1,7 +1,10 @@
 import { Environment, OrbitControls } from "@react-three/drei";
+import { useCameraRig } from "../../../hooks/UseCameraRig";
 import DumbbellModel from "../DumbbellModel/DumbbellModel";
 
 const Experience = () => {
+  useCameraRig();
+
   return (
     <>
       <ambientLight intensity={0.36} />
