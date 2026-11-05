@@ -1,0 +1,40 @@
+.colorPicker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 12px 15px;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card);
+  background-color: var(--color-bg-panel-strong);
+}
+
+.colorPicker__label {
+  font-size: 0.56rem;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.colorPicker__list {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.colorPicker__color {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  transition: transform var(--transition-fast);
+}
+
+.colorPicker__color:hover {
+  transform: scale(1.1);
+}
+
+.colorPicker__color--selected {
+  outline: 2px solid var(--color-actions-primary);
+  outline-offset: 3px;
+}
