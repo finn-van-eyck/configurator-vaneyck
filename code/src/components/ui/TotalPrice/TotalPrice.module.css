@@ -91,3 +91,13 @@
 .totalPrice__button:hover {
   background-color: var(--color-actions-primary-hover);
 }
+@media (max-width: 1024px) {
+  .totalPrice {
+    top: calc(var(--header-height) + var(--space-md));
+    bottom: auto;
+  }
+
+  .totalPrice__list {
+    width: 300px;
+  }
+}

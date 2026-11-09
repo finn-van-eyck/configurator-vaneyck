@@ -60,3 +60,8 @@
 .progressSteps__step--active .progressSteps__number {
   color: var(--color-text-accent);
 }
+@media (max-width: 1024px) {
+  .progressSteps {
+    width: calc(100% - 32px);
+  }
+}
