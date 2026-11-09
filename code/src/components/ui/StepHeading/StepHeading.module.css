@@ -31,7 +31,7 @@
   font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
 }
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .heading {
     top: calc(var(--header-height) + var(--space-md));
     transform: none;
